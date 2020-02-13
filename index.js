@@ -28,7 +28,7 @@ var mReleased = false;
 
 function main() {
   if(isMobile.any()){
-    PNUM = 50;
+    PNUM = 100;
   }
   // Get A WebGL context
   var canvas = document.getElementById("c");
