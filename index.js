@@ -1,11 +1,35 @@
 "use strict";
 
+var isMobile = {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function () {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function () {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function () {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+            }
+        };
+
 var PNUM = 512;
 var mPos = [];
 var maxPosLength = 12;
 var mReleased = false;
 
 function main() {
+  if(isMobile.any()){
+    PNUM = 50;
+  }
   // Get A WebGL context
   var canvas = document.getElementById("c");
   var gl = canvas.getContext("webgl");
